@@ -70,10 +70,32 @@
     </div>
 
     <script>
-        function loginWithGoogle() {
-            // Add your Google login logic here
-            alert("Implement your Google login logic here");
+        <script>
+    function loginWithGoogle() {
+        // Simulate Google authentication and retrieve email address
+        var userEmail = prompt("Please enter your email address:");
+
+        if (userEmail) {
+            // Simulate creating a password
+            var userPassword = prompt("Create your password:");
+
+            if (userPassword) {
+                // Remove "?auth=page"
+                var currentUrl = window.location.href;
+                var urlWithoutAuth = currentUrl.replace('?auth=page', '');
+
+                // Update bio privacy setting
+                alert("Bio set to private. Bio data saved for user: " + userEmail);
+                // You can add further logic to save user data or redirect to another page
+            } else {
+                alert("Password creation canceled.");
+            }
+        } else {
+            alert("Login with Google canceled.");
         }
+    }
+</script>
+
     </script>
 
 </body>
