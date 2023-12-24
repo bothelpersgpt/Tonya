@@ -11,39 +11,30 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #282c35; /* Darker background color */
-            color: #ddd; /* Lighter text color */
+            background-color: #282c35;
+            color: #ddd;
         }
 
         header {
-            background-color: #1a1d23; /* Darker header color */
+            background-color: #1a1d23;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             margin: 0;
-            color: #f8f8f8; /* Lighter heading color */
+            color: #f8f8f8;
             font-size: 48px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
         }
 
         .logo {
             font-size: 2em;
-            color: #f8f8f8; /* Lighter logo color */
+            color: #f8f8f8;
             margin-right: 10px;
-        }
-
-        /* Your existing styles remain unchanged */
-
-        /* Add your additional styling here */
-
-        .blocked-message {
-            color: #FF0000; /* Red color for the message */
-            margin-top: 10px;
         }
 
         .bio-container {
@@ -52,7 +43,7 @@
         }
 
         .login-button {
-            background-color: #4CAF50; /* Green */
+            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             text-align: center;
@@ -66,39 +57,25 @@
 </head>
 
 <body>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function loadGame() {
                 var inputLink = document.getElementById("gameLink").value;
-                var allowedLink = "https://example.com"; // Replace with the allowed link
+                var allowedLink = "now.gg"; // Replace with the allowed link
 
                 if (inputLink === allowedLink) {
-                    // Create an iframe and set its attributes
                     var iframe = document.createElement("iframe");
                     iframe.src = inputLink;
                     iframe.width = "100%";
                     iframe.height = "500px";
                     iframe.style.border = "none";
 
-                    // Append the iframe to the game section
                     var gameSection = document.getElementById("gameSection");
-                    gameSection.innerHTML = ""; // Clear existing content
+                    gameSection.innerHTML = "";
                     gameSection.appendChild(iframe);
                 } else {
-                    // Display a blocked message
-                    var blockedMessage = document.getElementById("blockedMessage");
-                    blockedMessage.style.display = "block";
-
-                    // Check if the user typed in "now.gg"
-                    if (inputLink.toLowerCase() === "now.gg") {
-                        // Unblock the game and hide the message
-                        var gameSection = document.getElementById("gameSection");
-                        gameSection.innerHTML = ""; // Clear existing content
-                        blockedMessage.style.display = "none";
-                    } else {
-                        // Inform the user to type in "now.gg"
-                        alert("Blocked link. Please type in 'now.gg' to unblock.");
-                    }
+                    alert("Invalid link. Please provide the correct link to play the game type in now.gg.");
                 }
             }
 
@@ -111,21 +88,11 @@
     </header>
 
     <div class="bio-container">
-        <!-- Input for the game link -->
         <input type="text" id="gameLink" placeholder="Enter game link">
-
-        <!-- Button to load the game content -->
         <button id="playButton" class="login-button">Play Game</button>
-
-        <!-- Blocked message -->
-        <div id="blockedMessage" class="blocked-message" style="display: none;">
-            Blocked! Type in 'now.gg' to unblock.
-        </div>
     </div>
 
-    <!-- Section that will display the game content -->
     <div id="gameSection" class="bio-section">
-        <!-- Game content will be dynamically added here -->
     </div>
 </body>
 
