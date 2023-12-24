@@ -79,57 +79,45 @@
             border-radius: 5px;
         }
     </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to check the link and show the game section if it matches
+            function checkLink() {
+                var inputLink = document.getElementById("gameLink").value;
+                var allowedLink = "now.gg"; // Replace with the allowed link
+
+                if (inputLink === allowedLink) {
+                    document.getElementById("gameSection").style.display = "block";
+                } else {
+                    alert("Invalid link. Please provide the correct link to play the game.");
+                }
+            }
+
+            // Attach the checkLink function to the button click event
+            document.getElementById("playButton").addEventListener("click", checkLink);
+        });
+    </script>
 </head>
 
 <body>
-
     <header>
         <h1><i class="logo fas fa-crown"></i>Tonya</h1>
     </header>
 
     <div class="bio-container">
-        <p>Keep your secret bio saved securely. Log in with Google to access and save your information.</p>
-        <button class="login-button" onclick="loginWithGoogle()">Login with Google</button>
+        <!-- Input for the game link -->
+        <input type="text" id="gameLink" placeholder="Enter game link">
+
+        <!-- Button to check the link and show the game section -->
+        <button id="playButton" class="login-button">Play Game</button>
     </div>
 
-    <div class="bio-section" id="bioSection">
-        <p id="userBio">This is your private bio.</p>
-        <button id="saveButton" onclick="saveBio()">Save Bio</button>
+    <!-- Section that will be displayed if the link is valid -->
+    <div id="gameSection" class="bio-section">
+        <!-- Add your game embed code or content here -->
+        <p>Game content goes here...</p>
     </div>
-
-    <script>
-        function loginWithGoogle() {
-            // Simulate Google authentication and retrieve email address
-            var userEmail = prompt("Please enter your email address:");
-
-            if (userEmail) {
-                // Simulate creating a password
-                var userPassword = prompt("Create your password:");
-
-                if (userPassword) {
-                    // Remove "?auth=page"
-                    var currentUrl = window.location.href;
-                    var urlWithoutAuth = currentUrl.replace('?auth=page', '');
-
-                    // Update bio privacy setting
-                    alert("Bio set to private. Bio data saved for user: " + userEmail);
-
-                    // Show bio section
-                    document.getElementById("bioSection").style.display = "block";
-                } else {
-                    alert("Password creation canceled.");
-                }
-            } else {
-                alert("Login with Google canceled.");
-            }
-        }
-
-        function saveBio() {
-            // You can add logic here to save the bio data
-            alert("Bio saved!");
-        }
-    </script>
-
 </body>
 
 </html>
