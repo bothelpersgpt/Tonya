@@ -39,6 +39,22 @@
 
         /* Add your additional styling here */
 
+        .bio-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .login-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -46,12 +62,19 @@
 
     <header>
         <h1><i class="logo fas fa-crown"></i>Tonya</h1>
-        
     </header>
 
-    
+    <div class="bio-container">
+        <p>Keep your secret bio saved securely. Log in with Google to access and save your information.</p>
+        <button class="login-button" onclick="loginWithGoogle()">Login with Google</button>
+    </div>
 
-    <p style="text-align: center; margin: 20px;">Providing this, we are working on it</p>
+    <script>
+        function loginWithGoogle() {
+            // Add your Google login logic here
+            alert("Implement your Google login logic here");
+        }
+    </script>
 
 </body>
 
