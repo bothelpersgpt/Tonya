@@ -37,14 +37,37 @@
             margin-right: 10px;
         }
 
-        /* Add your additional styling here */
-
         .bio-container {
             text-align: center;
             margin: 20px;
         }
 
         .login-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .bio-section {
+            margin-top: 20px;
+            display: none;
+        }
+
+        #userBio {
+            background-color: #1a1d23; /* Darker header color */
+            color: #f8f8f8; /* Lighter text color */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #saveButton {
+            margin-top: 10px;
             background-color: #4CAF50; /* Green */
             color: white;
             padding: 10px 20px;
@@ -69,33 +92,42 @@
         <button class="login-button" onclick="loginWithGoogle()">Login with Google</button>
     </div>
 
+    <div class="bio-section" id="bioSection">
+        <p id="userBio">This is your private bio.</p>
+        <button id="saveButton" onclick="saveBio()">Save Bio</button>
+    </div>
+
     <script>
-        <script>
-    function loginWithGoogle() {
-        // Simulate Google authentication and retrieve email address
-        var userEmail = prompt("Please enter your email address:");
+        function loginWithGoogle() {
+            // Simulate Google authentication and retrieve email address
+            var userEmail = prompt("Please enter your email address:");
 
-        if (userEmail) {
-            // Simulate creating a password
-            var userPassword = prompt("Create your password:");
+            if (userEmail) {
+                // Simulate creating a password
+                var userPassword = prompt("Create your password:");
 
-            if (userPassword) {
-                // Remove "?auth=page"
-                var currentUrl = window.location.href;
-                var urlWithoutAuth = currentUrl.replace('?auth=page', '');
+                if (userPassword) {
+                    // Remove "?auth=page"
+                    var currentUrl = window.location.href;
+                    var urlWithoutAuth = currentUrl.replace('?auth=page', '');
 
-                // Update bio privacy setting
-                alert("Bio set to private. Bio data saved for user: " + userEmail);
-                // You can add further logic to save user data or redirect to another page
+                    // Update bio privacy setting
+                    alert("Bio set to private. Bio data saved for user: " + userEmail);
+
+                    // Show bio section
+                    document.getElementById("bioSection").style.display = "block";
+                } else {
+                    alert("Password creation canceled.");
+                }
             } else {
-                alert("Password creation canceled.");
+                alert("Login with Google canceled.");
             }
-        } else {
-            alert("Login with Google canceled.");
         }
-    }
-</script>
 
+        function saveBio() {
+            // You can add logic here to save the bio data
+            alert("Bio saved!");
+        }
     </script>
 
 </body>
