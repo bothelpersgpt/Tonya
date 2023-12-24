@@ -62,7 +62,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             function loadGame() {
                 var inputLink = document.getElementById("gameLink").value;
-                var allowedLink = "now.gg"; // Replace with the allowed link
+                var allowedLink = "https://now.gg"; // Replace with the allowed link
 
                 if (inputLink === allowedLink) {
                     var iframe = document.createElement("iframe");
@@ -75,7 +75,7 @@
                     gameSection.innerHTML = "";
                     gameSection.appendChild(iframe);
                 } else {
-                    alert("Invalid link. Please provide the correct link to play the game type in now.gg.");
+                    alert("Invalid link. Please provide the correct link to play the game type in https://now.gg");
                 }
             }
 
