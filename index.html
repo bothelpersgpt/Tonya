@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonya's Meter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -37,6 +37,8 @@
             margin-right: 10px;
         }
 
+        /* Add your additional styling here */
+
         .bio-container {
             text-align: center;
             margin: 20px;
@@ -53,70 +55,55 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
-        .bio-section {
-            margin-top: 20px;
-            display: none;
-        }
-
-        #userBio {
-            background-color: #1a1d23; /* Darker header color */
-            color: #f8f8f8; /* Lighter text color */
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        #saveButton {
-            margin-top: 10px;
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
     </style>
+</head>
+
+<body>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Function to check the link and show the game section if it matches
-            function checkLink() {
+            function loadGame() {
                 var inputLink = document.getElementById("gameLink").value;
-                var allowedLink = "now.gg"; // Replace with the allowed link
+                var allowedLink = "https://example.com"; // Replace with the allowed link
 
                 if (inputLink === allowedLink) {
-                    document.getElementById("gameSection").style.display = "block";
+                    // Create an iframe and set its attributes
+                    var iframe = document.createElement("iframe");
+                    iframe.src = inputLink;
+                    iframe.width = "100%";
+                    iframe.height = "500px";
+                    iframe.style.border = "none";
+
+                    // Append the iframe to the game section
+                    var gameSection = document.getElementById("gameSection");
+                    gameSection.innerHTML = ""; // Clear existing content
+                    gameSection.appendChild(iframe);
                 } else {
                     alert("Invalid link. Please provide the correct link to play the game.");
                 }
             }
 
-            // Attach the checkLink function to the button click event
-            document.getElementById("playButton").addEventListener("click", checkLink);
+            document.getElementById("playButton").addEventListener("click", loadGame);
         });
     </script>
 </head>
 
 <body>
     <header>
-        <h1><i class="logo fas fa-crown"></i>Tonya</h1>
+    <h1><i class="logo fas fa-crown"></i>Tonya</h1>
     </header>
 
     <div class="bio-container">
         <!-- Input for the game link -->
         <input type="text" id="gameLink" placeholder="Enter game link">
 
-        <!-- Button to check the link and show the game section -->
+        <!-- Button to load the game content -->
         <button id="playButton" class="login-button">Play Game</button>
     </div>
 
-    <!-- Section that will be displayed if the link is valid -->
+    <!-- Section that will display the game content -->
     <div id="gameSection" class="bio-section">
-        <!-- Add your game embed code or content here -->
-        <p>Game content goes here...</p>
+        <!-- Game content will be dynamically added here -->
     </div>
 </body>
 
