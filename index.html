@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonya's Meter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -37,7 +37,14 @@
             margin-right: 10px;
         }
 
+        /* Your existing styles remain unchanged */
+
         /* Add your additional styling here */
+
+        .blocked-message {
+            color: #FF0000; /* Red color for the message */
+            margin-top: 10px;
+        }
 
         .bio-container {
             text-align: center;
@@ -59,12 +66,11 @@
 </head>
 
 <body>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function loadGame() {
                 var inputLink = document.getElementById("gameLink").value;
-                var allowedLink = "https://now.gg"; // Replace with the allowed link
+                var allowedLink = "https://example.com"; // Replace with the allowed link
 
                 if (inputLink === allowedLink) {
                     // Create an iframe and set its attributes
@@ -79,18 +85,29 @@
                     gameSection.innerHTML = ""; // Clear existing content
                     gameSection.appendChild(iframe);
                 } else {
-                    alert("Invalid link. Please provide the correct link to play the game it https://now.gg.");
+                    // Display a blocked message
+                    var blockedMessage = document.getElementById("blockedMessage");
+                    blockedMessage.style.display = "block";
+
+                    // Check if the user typed in "now.gg"
+                    if (inputLink.toLowerCase() === "now.gg") {
+                        // Unblock the game and hide the message
+                        var gameSection = document.getElementById("gameSection");
+                        gameSection.innerHTML = ""; // Clear existing content
+                        blockedMessage.style.display = "none";
+                    } else {
+                        // Inform the user to type in "now.gg"
+                        alert("Blocked link. Please type in 'now.gg' to unblock.");
+                    }
                 }
             }
 
             document.getElementById("playButton").addEventListener("click", loadGame);
         });
     </script>
-</head>
 
-<body>
     <header>
-    <h1><i class="logo fas fa-crown"></i>Tonya</h1>
+        <h1><i class="logo fas fa-crown"></i>Tonya</h1>
     </header>
 
     <div class="bio-container">
@@ -99,6 +116,11 @@
 
         <!-- Button to load the game content -->
         <button id="playButton" class="login-button">Play Game</button>
+
+        <!-- Blocked message -->
+        <div id="blockedMessage" class="blocked-message" style="display: none;">
+            Blocked! Type in 'now.gg' to unblock.
+        </div>
     </div>
 
     <!-- Section that will display the game content -->
