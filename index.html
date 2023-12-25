@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tonya's Meter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -11,31 +11,33 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #282c35;
-            color: #ddd;
+            background-color: #282c35; /* Darker background color */
+            color: #ddd; /* Lighter text color */
         }
 
         header {
-            background-color: #1a1d23;
+            background-color: #1a1d23; /* Darker header color */
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
         }
 
         h1 {
             margin: 0;
-            color: #f8f8f8;
+            color: #f8f8f8; /* Lighter heading color */
             font-size: 48px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* Subtle text shadow */
         }
 
         .logo {
             font-size: 2em;
-            color: #f8f8f8;
+            color: #f8f8f8; /* Lighter logo color */
             margin-right: 10px;
         }
+
+        /* Add your additional styling here */
 
         .bio-container {
             text-align: center;
@@ -43,7 +45,7 @@
         }
 
         .login-button {
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Green */
             color: white;
             padding: 10px 20px;
             text-align: center;
@@ -65,34 +67,43 @@
                 var allowedLink = "https://now.gg"; // Replace with the allowed link
 
                 if (inputLink === allowedLink) {
+                    // Create an iframe and set its attributes
                     var iframe = document.createElement("iframe");
                     iframe.src = inputLink;
                     iframe.width = "100%";
                     iframe.height = "500px";
                     iframe.style.border = "none";
 
+                    // Append the iframe to the game section
                     var gameSection = document.getElementById("gameSection");
-                    gameSection.innerHTML = "";
+                    gameSection.innerHTML = ""; // Clear existing content
                     gameSection.appendChild(iframe);
                 } else {
-                    alert("Invalid link. Please provide the correct link to play the game type in https://now.gg");
+                    alert("Invalid link. Please provide the correct link to play the game it https://now.gg.");
                 }
             }
 
             document.getElementById("playButton").addEventListener("click", loadGame);
         });
     </script>
+</head>
 
+<body>
     <header>
-        <h1><i class="logo fas fa-crown"></i>Tonya</h1>
+    <h1><i class="logo fas fa-crown"></i>Tonya</h1>
     </header>
 
     <div class="bio-container">
+        <!-- Input for the game link -->
         <input type="text" id="gameLink" placeholder="Enter game link">
+
+        <!-- Button to load the game content -->
         <button id="playButton" class="login-button">Play Game</button>
     </div>
 
+    <!-- Section that will display the game content -->
     <div id="gameSection" class="bio-section">
+        <!-- Game content will be dynamically added here -->
     </div>
 </body>
 
