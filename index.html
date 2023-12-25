@@ -181,12 +181,34 @@
                 });
                 profileSection.appendChild(editBioButton);
 
+                // Display the "Save" button after editing bio
+                var saveBioButton = document.createElement("button");
+                saveBioButton.innerHTML = "Save";
+                saveBioButton.className = "save-button";
+                saveBioButton.style.display = "none";
+                saveBioButton.addEventListener("click", function () {
+                    // Save edited bio to local storage
+                    var editedBio = bioTextarea.value;
+                    localStorage.setItem("bio", editedBio);
+                    bioTextarea.readOnly = true;
+                    editBioButton.style.display = "inline-block";
+                    saveBioButton.style.display = "none";
+                });
+                profileSection.appendChild(saveBioButton);
+
                 // Display the username
                 var usernameDiv = document.createElement("div");
                 var username = localStorage.getItem("username");
                 usernameDiv.innerHTML = "Username: " + username;
                 usernameDiv.className = "username";
                 profileSection.appendChild(usernameDiv);
+            }
+
+            function logout() {
+                localStorage.removeItem("username");
+                localStorage.removeItem("bio");
+                var profileSection = document.getElementById("profileSection");
+                profileSection.innerHTML = ""; // Clear existing content
             }
 
             // Check if the user is already logged in
@@ -201,6 +223,10 @@
                     signUp();
                 }
             });
+
+            document.getElementById("logoutButton").addEventListener("click", function () {
+                logout();
+            });
         });
     </script>
 
@@ -211,6 +237,8 @@
     <div class="bio-container">
         <!-- Button to sign up and create a profile -->
         <button id="signUpButton" class="login-button">Sign Up</button>
+        <!-- Button to log out -->
+        <button id="logoutButton" class="login-button">Logout</button>
     </div>
 
     <!-- Section that will display the profile content -->
